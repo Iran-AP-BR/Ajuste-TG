@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from .base_duplicates_shreder import BaseDuplicatesShreder
+from .base_duplicates_shredder import BaseDuplicatesShredder
 
-class HashDuplicatesShreder(BaseDuplicatesShreder):
+class HashDuplicatesShredder(BaseDuplicatesShredder):
     '''Classe para eliminar duplicadas de linhas em arquivos de texto plano por meio da técnica de hash.'''
 
     

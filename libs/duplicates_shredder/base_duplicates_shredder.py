@@ -2,7 +2,7 @@
 
 from abc import ABC, abstractmethod
 
-class BaseDuplicatesShreder(ABC):
+class BaseDuplicatesShredder(ABC):
     def __init__(self, encoding='utf-8'):
         self.errMessage = ''
         self.encoding = encoding

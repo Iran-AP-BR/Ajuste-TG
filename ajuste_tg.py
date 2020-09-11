@@ -16,7 +16,7 @@ from libs.arguments_parser import Parser
 from libs.file_writer import CsvWriter
 from libs.file_reader import ExcelReader
 from libs.file_handler import FileHandler
-from libs.duplicates_shreder import HashDuplicatesShreder
+from libs.duplicates_shredder import HashDuplicatesShredder
 from libs.processing import Processing
 from libs.processing_logger import ProcessingLogger
 
@@ -65,7 +65,7 @@ if __name__ == '__main__':
             loader = Loader(model=model, reader=ExcelReader(tool=pd))
             fitter = Fitter(model=model, tool=pd)
             writer = CsvWriter()
-            dup_shredder = HashDuplicatesShreder(hash=hash) if args.remove_duplicates else None
+            dup_shredder = HashDuplicatesShredder(hash=hash) if args.remove_duplicates else None
             file_handler = FileHandler()
         
             #Instancia o processamento
