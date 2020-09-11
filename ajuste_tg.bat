@@ -1,0 +1,1 @@
+python ajuste_tg.py %*
