@@ -73,7 +73,7 @@ offset: número inteiro que indica quantas linhas após os cabeçalhos os dados 
 
     ~~~~
 
-> Em vez de passar os argumentos diretamente, pode-se passá-los por meio de um arquivo: *@nome_do_arquivo*. Cada linha desse arquivo deve conter apenas um argumento. Os argumentos opcionais devem estar no formato --<nome_arg>=<valor> ou -<abrev_arg>=<valor>, não pode haver espaços.
+> Em vez de passar os argumentos diretamente, pode-se passá-los por meio de um arquivo: *@nome_do_arquivo*. Cada linha desse arquivo deve conter apenas um argumento. Os argumentos opcionais devem estar no formato --<nome_arg>=<valor_do_argumento> ou -<abrev_arg>=<valor_do_argumento>, não pode haver espaços.
 
 * Exemplo: 
 
