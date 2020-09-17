@@ -32,9 +32,13 @@ def hash(text):
 if __name__ == '__main__':
 
     #Define o nome do programa
-    prog_name = sys.argv[0][:-3]
+    prog_name = os.path.basename(sys.argv[0])[:-3]
 
-    #define o nome e cria a pasta de logs, se necessário
+    #Instancia o parseador de linha de comando e carrega/valida as opções informadas pelo usuário
+    parser = Parser(argparse.ArgumentParser, prog_name, os.path.basename, glob)
+    args = parser.parse_arguments()
+
+    #define o nome da pasta de logs e a cria, se necessário
     logs_path = 'logs'
     if not os.path.exists(logs_path):
         os.mkdir(logs_path)
@@ -42,11 +46,7 @@ if __name__ == '__main__':
     #Configura o logging
     logging.basicConfig(filename=f'{logs_path}/{prog_name}_{datetime.now().strftime("%Y%m%d_%H%M%S")}.log',
                         level=logging.INFO, format='%(asctime)-15s %(message)s')
-
-    #Instancia o parseador de linha de comando e carrega as opções informadas pelo usuário
-    parser = Parser(argparse.ArgumentParser, prog_name, os.path.basename, glob)
-    args = parser.parse_arguments()
-
+    
     try:
         #Define o nome do arquivo de saída
         output_filename = args.output if args.output else f'output_{datetime.now().strftime("%Y%m%d_%H%M%S")}.csv'
