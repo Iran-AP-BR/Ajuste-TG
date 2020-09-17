@@ -91,3 +91,57 @@ offset: número inteiro que indica quantas linhas após os cabeçalhos os dados 
     -r
     -d
     ~~~~
+
+## Ambiente Virtual:
+É recomendável que se crie um ambiente virtual para executar o projeto. Para fazer isso, deve-se instalar o VirtualEnv, caso ainda não esteja instalado, e criar um ambiente virtual:
+
+* Instalação do VirtualEnv:
+    ~~~~
+    $ pip install virtualenv
+    ~~~~
+
+* Criação do ambiente virtual, sintaxe: virtualenv \<caminho\> (consulte virtualenv -h para mais informações). Exemplo:
+    ~~~~
+    $ virtualenv venv
+    ~~~~
+
+* Acionamento do ambiente virtual:
+
+    ~~~~
+    $ venv/scripts/activate
+    ~~~~
+
+* Para desativar o ambiente virtual:
+
+    ~~~~
+    (venv)$ deactivate
+    ~~~~
+
+* Instalação de dependências (após ativar o ambiente virtual):
+
+    ~~~~
+    (venv)$ pip install -r requirements.txt
+    ~~~~
+
+
+## Criar executável:
+Para criar uma versão executável (.exe) é necessário instalar o *pyinstaller*, preferencialmente dentro do ambiente virtual <span style="font-size: 11px"><sup>Nota</sup></span>.
+
+* Instalação do pyinstaller:
+    ~~~~
+    (venv)$ pip install pyinstaller
+    ~~~~
+
+* Opção 1 -> Criação do executável (.exe) em uma pasta com todos os demais arquivos necessários para a execução:
+    ~~~~
+    (venv)$ pyinstaller ajuste_tg.py
+    ~~~~
+
+* Opção 1 -> Criação do executável em apenas um arquivo .exe:
+    ~~~~
+    (venv)$ pyinstaller ajuste_tg.py -F
+    ~~~~
+
+O resultado estará na pasta *dist*.
+
+>**Nota**: não haverá problema se o *pyinstaller* for instalado fora do ambiente virtual. Porém, a pasta ou o arquivo criados serão desnecessariamente maiores.
