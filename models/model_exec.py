@@ -12,13 +12,13 @@ def adjustDate(df):
     return df
 
 
-class ModelExec(BaseModel):
+class Model(BaseModel):
     '''Classe utilizada para representar o modelo "execução_despesa" que representa os dados de execução da despesa.'''
 
 
     def clean(self, content):
-        if type(content) == str and len(re.findall('^\s|\s$|;', content)) > 0:
-            content = content.replace(';', ',').strip(' ')
+        if type(content) == str:
+            content = content.replace(';', ',').strip()
         return content
 
     @property

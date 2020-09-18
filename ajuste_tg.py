@@ -90,3 +90,4 @@ if __name__ == '__main__':
         processing_logger.print_stage_result('\nProcessamento falhou!\n')
     
     input('\nPressione ENTER para encerrar ...')
+    

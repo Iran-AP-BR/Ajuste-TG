@@ -1,12 +1,8 @@
 # ajuste-TG
-Script de ajuste de arquivos exportados do Tesouro Gerencial a modelos predefinidos e realiza concatenação caso mais de um arquivo seja fornecido.
+Script (em python 3.7.5) de ajuste de arquivos exportados do Tesouro Gerencial a modelos predefinidos e realiza concatenação caso mais de um arquivo seja fornecido.
 
-Os modelos devem ser criados como classes derivadas da classe **BaseModel** (definida em ./models/base_model.py). Um *import* deve ser acrescido no módulo *models_collection* para que a nova classe fique disponível para o resto da aplicação.
+Para adicionar um novo modelo deve-se apenas acrescentar um novo módulo (arquivo .py) dentro de *models*, contendo uma classe chamada **Model**, derivada da classe abstrata **BaseModel**. O nome do arquivo do novo módulo deve ser *model_\<qualquer_coisa\>.py* (e.g.: model_exec.py).
 
-        Exemplo:
-            
-            from .model_exec import ModelExec
-        
 
 ## BaseModel
 
