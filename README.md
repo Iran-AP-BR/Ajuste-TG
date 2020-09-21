@@ -66,28 +66,27 @@ Além disso, há os seguintes métodos e propriedade cuja sobreposição (overri
 * Descrição
 
     ~~~~
-    usage: ajuste_tg [-h] --modelo nome_do_modelo [--destino arquivo_destino]
-                    [--remover-duplicatas] [--data-unica]
-                    arquivos [arquivos ...]
+    usage: ajuste_tg [-h] -m nome_do_modelo [-o arquivo_destino] [-r] [-d]
+                     arquivos [arquivos ...]
 
     positional arguments:
-    arquivos              Arquivos. Pelo menos um deve ser informado. pode
+      arquivos              Arquivos. Pelo menos um deve ser informado. pode
                             conter caracteres coringa (*/?) para indicar um
                             conjunto de arquivos.
 
     optional arguments:
-    -h, --help            show this help message and exit
-    --modelo nome_do_modelo, -m nome_do_modelo
+      -h, --help            show this help message and exit
+      -m nome_do_modelo, --modelo nome_do_modelo
                             Nome do modelo.
-    --destino arquivo_destino, -o arquivo_destino
-                            Nome do arquivo de saída. Pode conter o caminho completo.
-                            Ex: /path/file.csv.
-    --remover-duplicatas, -r
-                            Se presente, indica que as duplicatas devem ser removidas.
-    --data-unica, -d      Se presente, indica que as datas de extração dos dados
+      -o arquivo_destino, --destino arquivo_destino
+                            Nome do arquivo de saída. Pode conter o caminho
+                            completo. Ex: /path/file.csv.
+      -r, --remover-duplicatas
+                            Se presente, indica que as duplicatas devem ser
+                            removidas.
+      -d, --data-unica      Se presente, indica que as datas de extração dos dados
                             (SIAFI -> TG) devem ser todas iguais, no caso de
                             múltiplos arquivos.
-
     ~~~~
 
 > Em vez de passar os argumentos diretamente, pode-se passá-los por meio de um arquivo: *@nome_do_arquivo*. Cada linha desse arquivo deve conter apenas um argumento. Os argumentos opcionais devem estar no formato --<nome_arg>=<valor_do_argumento> ou -<abrev_arg>=<valor_do_argumento>, não pode haver espaços.
