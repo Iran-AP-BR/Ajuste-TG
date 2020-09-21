@@ -1,8 +1,9 @@
 # ajuste-TG
-Script (em python 3.7.5) de ajuste de arquivos exportados do Tesouro Gerencial a modelos predefinidos e realiza concatenação caso mais de um arquivo seja fornecido.
+Script (em python 3.7.5) de ajuste de arquivos tabulares exportados do Tesouro Gerencial a modelos predefinidos e realiza concatenação caso mais de um arquivo seja fornecido.
 
-Para adicionar um novo modelo deve-se apenas acrescentar um novo módulo (arquivo .py) dentro de *models*, contendo uma classe chamada **Model**, derivada da classe abstrata **BaseModel**. O nome do arquivo do novo módulo deve ser *model_\<qualquer_coisa\>.py* (e.g.: model_exec.py).
+Para adicionar um novo modelo deve-se apenas acrescentar um novo módulo (*arquivo .py*) dentro de *models*, contendo uma classe chamada **Model**, derivada da classe abstrata **BaseModel**. O nome do arquivo do novo módulo deve ser *model_\<qualquer_coisa\>.py* (e.g.: model_exec.py).
 
+Os arquivos baixados do Tesouro Gerencial deve conter na primeira linha o seguinte texto: **Data da última extração do SIAFI: {<nome-do-relatório|<dd/mm/aaaa>}**. Para isso, no Tesouro Gerencial, basta editar o *cabeçalho de exportação*, cujo campo *cabeçalho* deve ser preenchido com **{{&Report}|{&DataPubSiafi}}**.
 
 ## BaseModel
 
