@@ -6,14 +6,13 @@ Para adicionar um novo modelo deve-se apenas acrescentar um novo módulo (arquiv
 
 ## BaseModel
 
-Os seguintes métodos e propriedade devem ser soprepostos pela nova classe:
+As seguintes propriedade devem ser soprepostos(overridden) pela nova classe:
 
-* **clean**: método para fazer alterações no conteúdo das células, deve ser usada apenas para eliminar ou modificar caacteres ou textos indesejados.
 * **name**: propriedade que representa o nome do modelo.
 * **header_position**: número inteiro que indica em que linha estão os cabeçalhos de colunas.
-offset: número inteiro que indica quantas linhas após os cabeçalhos os dados iniciam.
+* **offset**: número inteiro que indica quantas linhas após os cabeçalhos os dados iniciam.
 * **discard_last_columns**: número inteiro que indica quantos colunas à direita devem ser excluídas.
-* **fixed_cols**: número inteiro que especifica a quantidade de colunas fixas (à esquerda), ou seja, aquelas que sempre estarão presentes nos arquivos. Pois as colunas de métricas (à direita) podem variar
+* **fixed_cols**: número inteiro que especifica a quantidade de colunas fixas (à esquerda), ou seja, aquelas que sempre estarão presentes nos arquivos. Pois as colunas de métricas (à direita) podem variar.
 * **functions**: lista de funções de tratamento de dados a serem executadas durante os ajustes. Por exemplo: mascaramento de CPF, ajuste de formato de data, etc. É opcional, caso não seja necessário, basta retornar uma lista vazia. Essas funcões devem recebe apenas um DataFrame (pandas) como argumento e devem retornar apenas esse DataFrame após o trtamento. Essas funções devem estar definidas fora da classe do modelo.
 * **structure**: um dicionário (estrutura chave-valor) cujas chaves são os nomes das colunas dos arquivos originais.
 
@@ -33,6 +32,28 @@ offset: número inteiro que indica quantas linhas após os cabeçalhos os dados 
                 'Coluna D.2': {'type': str, 'drop': False},
                 }
     ~~~~
+
+Além disso, há os seguintes métodos e propriedade cuja sobreposição (override) não é obrigatória:
+
+* **clean**: método para fazer alterações no conteúdo das células, deve ser usada apenas para eliminar ou modificar caracteres ou textos indesejados, ou seja, para fazer a limpeza dos dados, se necessário, caso contrário, não deve ser sobreposto.
+
+    > O método **clean** possui a seguinte assinatura: *clean(content)*. Onde **content**, único argumento, é uma *string* referente ao conteúdo da célula. Este método deve retornar o conteúdo modificado.
+
+    ~~~~
+    Exemplo:
+
+        def clean(self, content):
+            if type(content) == str:
+                content = content.replace(';', ',').strip()
+            return content 
+    ~~~~
+
+* **drop_columns**: método responsável pela eliminação de colunas marcadas para serem descartadas, conforme definido na propiedade **structure**. Via de regra não há necessidade de sobrepor este método.
+
+* **map_headers**: método responsável pela renomeação de colunas, conforme definido na propiedade **structure**. Via de regra não há necessidade de sobrepor este método.
+
+* **dtypes**: propriedade que retornar um dicionário (chave-valor) representativo dos tipos de dados (valor) de cada coluna (chave), conforme definido na propiedade **structure**. Via de regra não há necessidade de sobrepor esta propriedade.
+
 
 ## Uso:
 

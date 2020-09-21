@@ -21,13 +21,13 @@ class Parser(BaseParser):
         self.parser.add_argument('arquivos', nargs='+', type=str, help='Arquivos. Pelo menos um deve ser ' \
                                                          'informado. pode conter caracteres coringa (*/?) para ' \
                                                          'indicar um conjunto de arquivos.')
-        self.parser.add_argument('--modelo', '-m', dest='model', metavar='nome_do_modelo',
+        self.parser.add_argument('-m', '--modelo', dest='model', metavar='nome_do_modelo',
                                  type=str, required=True, help='Nome do modelo.')
-        self.parser.add_argument('--destino', '-o', dest='output', metavar='arquivo_destino', type=str,
+        self.parser.add_argument('-o', '--destino', dest='output', metavar='arquivo_destino', type=str,
                                  help='Nome do arquivo de saída. Pode conter o caminho completo. Ex: /path/file.csv.')
-        self.parser.add_argument('--remover-duplicatas', '-r', dest='remove_duplicates', action='store_true',
+        self.parser.add_argument('-r', '--remover-duplicatas', dest='remove_duplicates', action='store_true',
                                  default=False, help='Se presente, indica que as duplicatas devem ser removidas.')
-        self.parser.add_argument('--data-unica', '-d', dest='date_match', action='store_true', default=False,
+        self.parser.add_argument('-d', '--data-unica', dest='date_match', action='store_true', default=False,
                                 help='Se presente, indica que as datas de extração dos dados (SIAFI -> TG) ' \
                                 'devem ser todas iguais, no caso de múltiplos arquivos.')
 
