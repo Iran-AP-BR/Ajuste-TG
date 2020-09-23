@@ -142,23 +142,17 @@ Além disso, há os seguintes métodos e propriedade cuja sobreposição (overri
 
 
 ## Criar executável:
-Para criar uma versão executável (.exe) é necessário instalar o *pyinstaller*, preferencialmente dentro do ambiente virtual <span style="font-size: 11px"><sup>Nota</sup></span>.
+Para criar uma versão executável (.exe) é necessário utilizar o *pyinstaller*, ele é instalado junto com as dependências (requirements.txt).
 
-* Instalação do pyinstaller:
+* Opção 1 -> Criação do executável com argumentos em linha de comando:
     ~~~~
-    (venv)$ pip install pyinstaller
-    ~~~~
-
-* Opção 1 -> Criação do executável (.exe) em uma pasta com todos os demais arquivos necessários para a execução:
-    ~~~~
-    (venv)$ pyinstaller ajuste_tg.py
+    (venv)$ pyinstaller ajuste_tg.py --add-data models/*.py;models -F
     ~~~~
 
-* Opção 1 -> Criação do executável em apenas um arquivo .exe:
+* Opção 2 -> Criação do executável com base em arquivo de especificações:
     ~~~~
-    (venv)$ pyinstaller ajuste_tg.py -F
+    (venv)$ pyinstaller ajuste_tg.spec
     ~~~~
 
 O resultado estará na pasta *dist*.
 
->**Nota**: não haverá problema se o *pyinstaller* for instalado fora do ambiente virtual. Porém, a pasta ou o arquivo criados serão desnecessariamente maiores.

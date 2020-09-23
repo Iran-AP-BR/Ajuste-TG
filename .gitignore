@@ -2,3 +2,5 @@
 **/.env
 /logs
 *.csv
+/dist
+/build

@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
+from os.path import basename, abspath, dirname, join
 from importlib import import_module
 from glob import glob
-from os.path import basename
+import sys
+
 
 class ModelsCollection:
     '''Classe auxiliar para fornecer uma lista dos modelos disponíveis. Para adicionar um novo modelo
@@ -12,8 +14,10 @@ class ModelsCollection:
 
        
     def model(self, name):
-        modules = [basename(x)[:-3] for x in glob('models/model_*.py')]
-        for module in modules:
+        bundle_dir = getattr(sys, '_MEIPASS', None)
+        models_dir = f'{bundle_dir}/models' if bundle_dir else abspath(dirname(__file__))
+
+        for module in [basename(x)[:-3] for x in glob(f'{models_dir}/model_*.py')]:
             m = import_module(f'.{module}', 'models').Model()
             if m.name == name:
                 return m
