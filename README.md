@@ -88,7 +88,8 @@ Além disso, há os seguintes métodos e propriedade cuja sobreposição (overri
       -d, --data-unica      Se presente, indica que as datas de extração dos dados
                             (SIAFI -> TG) devem ser todas iguais, no caso de
                             múltiplos arquivos.
-      -g, --gzip            Se presente, indica que o arquivo gerado será comprimido pelo método gzip e terá a extensão ".gz" acrescentada a seu nome.
+      -g, --gzip            Se presente, indica que o arquivo gerado será comprimido 
+                            pelo método gzip e terá a extensão ".gz" acrescentada a seu nome.
 
     ~~~~
 
