@@ -4,3 +4,9 @@
 *.csv
 /dist
 /build
+/temp
+/output
+/dados
+**/xls
+**/xlsx
+**/csv

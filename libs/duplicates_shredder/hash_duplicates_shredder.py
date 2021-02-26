@@ -6,10 +6,9 @@ class HashDuplicatesShredder(BaseDuplicatesShredder):
     '''Classe para eliminar duplicadas de linhas em arquivos de texto plano por meio da técnica de hash.'''
 
     
-    def __init__(self, hash=None, encoding='utf-8', newline='\n'):
-        super().__init__(encoding=encoding)
+    def __init__(self, hash=None, encoding='utf-8', file_handler=None, newline='\n'):
+        super().__init__(encoding=encoding, file_handler=file_handler)
         self.hash = hash
-        self.errMessage = ''
         self.newline = newline
 
     def run(self, original_file=None, final_file=None):
@@ -19,8 +18,8 @@ class HashDuplicatesShredder(BaseDuplicatesShredder):
         self.errMessage = ''
         file_created = False
         try:
-            with open(original_file, "r", encoding=self.encoding) as fd_original, \
-                 open(final_file, "w", encoding=self.encoding, newline=self.newline) as fd_final:
+            with self.file_handler.open_file(filename=original_file, mode="r") as fd_original, \
+                 self.file_handler.open_file(filename=final_file, mode="w") as fd_final:
                 hashes = set()
                 for line in fd_original:
                     line_hash = hash(line)

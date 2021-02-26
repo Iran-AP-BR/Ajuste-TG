@@ -3,8 +3,12 @@
 from .base_processing import BaseProcessing
 
 class Processing(BaseProcessing):
-    def run(self, files, output_filename):        
-        temp_file = 'output.tmp'
+    def run(self, files, output_filename):
+        
+        temp_file = 'temp/output.tmp'
+        self.file_handler.mkdir(output_filename, file=True)
+        self.file_handler.mkdir(temp_file, file=True)
+
         current_date = None
         max_date = None
         

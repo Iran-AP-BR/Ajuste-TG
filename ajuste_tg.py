@@ -34,6 +34,7 @@ if __name__ == '__main__':
     #Define o nome do programa
     prog_name = os.path.basename(sys.argv[0])[:-3]
 
+
     #Instancia o parseador de linha de comando e carrega/valida as opções informadas pelo usuário
     parser = Parser(argparse.ArgumentParser, prog_name, os.path.basename, glob)
     args = parser.parse_arguments()
@@ -64,9 +65,12 @@ if __name__ == '__main__':
             # o Gravador, o Eliminador de Duplicatas e o Manipulador de Arquivos
             loader = Loader(model=model, reader=ExcelReader(tool=pd))
             fitter = Fitter(model=model, tool=pd)
-            writer = CsvWriter()
-            dup_shredder = HashDuplicatesShredder(hash=hash) if args.remove_duplicates else None
-            file_handler = FileHandler()
+            writer = CsvWriter(compression=args.gzip)
+            output_filename = writer.output_filename(filename=output_filename)
+
+            file_handler = FileHandler(compressed=args.gzip)
+            dup_shredder = HashDuplicatesShredder(hash=hash, file_handler=file_handler) \
+                                             if args.remove_duplicates else None
         
             #Instancia o processamento
             processing = Processing(loader=loader, 

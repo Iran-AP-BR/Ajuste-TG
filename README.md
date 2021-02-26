@@ -7,7 +7,7 @@ Os arquivos baixados do Tesouro Gerencial deve conter na primeira linha o seguin
 
 ## BaseModel
 
-As seguintes propriedade devem ser soprepostos(overridden) pela nova classe:
+As seguintes propriedades devem ser soprepostos(overridden) pela nova classe:
 
 * **name**: propriedade que representa o nome do modelo.
 * **header_position**: número inteiro que indica em que linha estão os cabeçalhos de colunas.
@@ -67,7 +67,7 @@ Além disso, há os seguintes métodos e propriedade cuja sobreposição (overri
 * Descrição
 
     ~~~~
-    usage: ajuste_tg [-h] -m nome_do_modelo [-o arquivo_destino] [-r] [-d]
+    usage: ajuste_tg [-h] -m nome_do_modelo [-o arquivo_destino] [-r] [-d] [-g]
                      arquivos [arquivos ...]
 
     positional arguments:
@@ -88,6 +88,8 @@ Além disso, há os seguintes métodos e propriedade cuja sobreposição (overri
       -d, --data-unica      Se presente, indica que as datas de extração dos dados
                             (SIAFI -> TG) devem ser todas iguais, no caso de
                             múltiplos arquivos.
+      -g, --gzip            Se presente, indica que o arquivo gerado será comprimido pelo método gzip e terá a extensão ".gz" acrescentada a seu nome.
+
     ~~~~
 
 > Em vez de passar os argumentos diretamente, pode-se passá-los por meio de um arquivo: *@nome_do_arquivo*. Cada linha desse arquivo deve conter apenas um argumento. Os argumentos opcionais devem estar no formato --<nome_arg>=<valor_do_argumento> ou -<abrev_arg>=<valor_do_argumento>, não pode haver espaços.

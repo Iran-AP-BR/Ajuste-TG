@@ -30,6 +30,9 @@ class Parser(BaseParser):
         self.parser.add_argument('-d', '--data-unica', dest='date_match', action='store_true', default=False,
                                 help='Se presente, indica que as datas de extração dos dados (SIAFI -> TG) ' \
                                 'devem ser todas iguais, no caso de múltiplos arquivos.')
+        self.parser.add_argument('-g', '--gzip', dest='gzip', action='store_true', default=False,
+                                help='Se presente, indica que o arquivo gerado será comprimido pelo método ' \
+                                'gzip e terá a extensão ".gz" acrescentada a seu nome.')
 
     def parse_arguments(self):
         args = self.parser.parse_args()
