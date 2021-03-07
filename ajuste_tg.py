@@ -9,6 +9,7 @@ import logging
 import pandas as pd
 from glob import glob
 from datetime import datetime
+from pathlib import Path
 from models import ModelsCollection
 from libs.data_loader import Loader
 from libs.model_fitter import Fitter
@@ -32,8 +33,7 @@ def hash(text):
 if __name__ == '__main__':
 
     #Define o nome do programa
-    prog_name = os.path.basename(sys.argv[0])[:-3]
-
+    prog_name = Path(sys.argv[0]).stem
 
     #Instancia o parseador de linha de comando e carrega/valida as opções informadas pelo usuário
     parser = Parser(argparse.ArgumentParser, prog_name, os.path.basename, glob)
